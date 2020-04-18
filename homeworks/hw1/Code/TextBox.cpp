@@ -2,6 +2,13 @@
 
 void TextBox::draw() throw(Exception)
 {
+    SetConsoleCursorPosition(this->handle, this->coordinations);
+    SetConsoleTextAttribute(this->handle, this->color);
+
+    CONSOLE_SCREEN_BUFFER_INFO info;
+    if (GetConsoleScreenBufferInfo(this->handle, &info) == FALSE)
+        throw new Exception("couldnt fetch data");
+
     if (this->handle == NULL || this->handle == INVALID_HANDLE_VALUE)
         throw Exception("Handle ERROR: no correct handle");
 
@@ -57,6 +64,7 @@ void TextBox::draw() throw(Exception)
     this->currPos.X += 2;
     ++this->currPos.Y;
     SetConsoleCursorPosition(this->handle, this->currPos);
+    SetConsoleTextAttribute(this->handle, info.wAttributes);
 }
 
 void TextBox::handleKeyStroke(KEY_EVENT_RECORD &e) throw(Exception)

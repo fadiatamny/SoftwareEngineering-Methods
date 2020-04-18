@@ -2,6 +2,7 @@
 
 void Label::draw() throw(Exception)
 {
+    SetConsoleCursorPosition(this->handle, this->coordinations);
     if(this->handle == NULL || this->handle == INVALID_HANDLE_VALUE) throw Exception("Handle ERROR: no correct handle");
 
     CONSOLE_CURSOR_INFO cursor = {1, FALSE};
