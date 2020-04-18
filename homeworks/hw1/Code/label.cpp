@@ -2,6 +2,8 @@
 
 void Label::draw() throw(Exception)
 {
+    if(this->handle == NULL || this->handle == INVALID_HANDLE_VALUE) throw Exception("Handle ERROR: no correct handle");
+
     CONSOLE_CURSOR_INFO cursor = {1, FALSE};
     CONSOLE_SCREEN_BUFFER_INFO info;
     if (GetConsoleScreenBufferInfo(this->handle, &info) == FALSE)
@@ -10,6 +12,6 @@ void Label::draw() throw(Exception)
     SetConsoleTextAttribute(this->handle, this->color);
     SetConsoleCursorPosition(this->handle, this->coordinations);
     SetConsoleCursorInfo(this->handle, &cursor);
-    std::cout << this->value;
+    this->outStream << this->value;
     SetConsoleTextAttribute(this->handle, info.wAttributes);
 }

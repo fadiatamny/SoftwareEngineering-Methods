@@ -2,5 +2,6 @@
 
 #include <windows.h>
 #include <iostream>
+#include <memory>
 #include <string>
-#include "exception.hpp"
+#include <vector>

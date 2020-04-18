@@ -1,3 +1,5 @@
+#pragma once
+
 #include "includes.hpp"
 
 class Exception : public std::exception

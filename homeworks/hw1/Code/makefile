@@ -1,6 +1,10 @@
 
 TARGET	=	program
-CC	= g++
+ifeq ($(OS), Windows_NT)
+	CXX = g++
+else
+	CXX = i686-w64-mingw32-g++
+endif
 CFLAGS	= -g 
 
 default: $(TARGET)
@@ -10,10 +14,10 @@ OBJECTS	= $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 HEADERS = $(wildcard *.hpp)
 
 %.o: %.cpp $(HEADERS)
-		$(CC) $(CFLAGS) -c $< -o $@
+		$(CXX) $(CFLAGS) -c $< -o $@
 
 $(TARGET): $(OBJECTS)
-		$(CC) $(OBJECTS) -Wall $(LIBS) -o $@
+		$(CXX) $(OBJECTS) -Wall $(LIBS) -o $@
 
 clean: cleanObj
 		rm $(TARGET).exe
