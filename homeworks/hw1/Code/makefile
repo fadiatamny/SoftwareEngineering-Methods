@@ -1,10 +1,13 @@
 
-TARGET	=	program
 ifeq ($(OS), Windows_NT)
 	CXX = g++
+	REM = del
 else
 	CXX = i686-w64-mingw32-g++
+	REM = rm
 endif
+
+TARGET	=	program
 CFLAGS	= -g 
 
 default: $(TARGET)
@@ -20,6 +23,6 @@ $(TARGET): $(OBJECTS)
 		$(CXX) $(OBJECTS) -Wall $(LIBS) -o $@
 
 clean: cleanObj
-		rm $(TARGET).exe
+		$(REM) $(TARGET).exe
 cleanObj:
-		rm *.o
+		$(REM) *.o
