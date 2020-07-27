@@ -33,3 +33,5 @@
 
 # Cuz macs are shit
 .DS_Store
+
+.vscode
