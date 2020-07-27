@@ -39,10 +39,28 @@ void Panel::clacWidthAndHeight()
         ciWidth = controls[i]->getWidth();
         if (ciX + ciWidth > calWidth)
             calWidth = ciX + ciWidth;
-        if(ciY +ciHight > calHight)
-            calHight = ciY+ciHight;
+        if (ciY + ciHight > calHight)
+            calHight = ciY + ciHight;
     }
-    setHeight(calHight+5);
-    setWidth(calWidth+5);
+    setHeight(calHight + 5);
+    setWidth(calWidth + 5);
 }
 
+int Panel::getFoucusIndex()
+{
+    Control *temp = getFocus();
+    for (int i = 0; i < controls.size(); ++i)
+        if (controls[i] == temp)
+        {
+            focusIndex = i;
+            return i;
+        }
+        else if (controls[i]->getFocusIndex() != -1)
+        {
+            focusIndex = i;
+            return i;
+        }
+
+    focusIndex = -1;
+    return -1;
+}
