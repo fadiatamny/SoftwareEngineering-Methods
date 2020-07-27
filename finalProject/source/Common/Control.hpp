@@ -17,7 +17,7 @@ public:
 
 	virtual void draw(Graphics &g, int x, int y, size_t z){};
 	virtual void keyDown(int keyCode, char charecter){};
-	virtual bool canGetFocus() { return FALSE; };
+	virtual bool canGetFocus() { return false; };
 	~Control(){};
 
 	bool isShown() const { return this->shown; };

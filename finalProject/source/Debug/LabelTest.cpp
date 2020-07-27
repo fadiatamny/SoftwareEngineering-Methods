@@ -1,13 +1,13 @@
 #include "../Common/Graphics.hpp"
-#include "../Controls/Button.hpp"
+#include "../Controls/Label.hpp"
 #include "../Common/EventEngine.hpp"
 #include "../Common/Border/BorderDoubleLineStyle.hpp"
 
 int main(int argc, char **argv)
 {
 	BorderDoubleLineStyle db;
-	Button b("test", 0, 15, 10, Color::Blue, Color::Blue, &db, nullptr);
-	Control &bc = b;
+	Label l("Test", 0, 15, 10, Color::Black, Color::Blue, &db);
+	Control &l2 = l;
 	EventEngine e;
-	e.run(bc);
+	e.run(l);
 }
