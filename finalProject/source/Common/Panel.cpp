@@ -45,3 +45,4 @@ void Panel::clacWidthAndHeight()
     setHeight(calHight+5);
     setWidth(calWidth+5);
 }
+

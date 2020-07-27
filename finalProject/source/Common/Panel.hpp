@@ -11,7 +11,7 @@ class Panel : public Control {
         bool addControl(Control* control);
         Control* getControl(int index);
         int getFoucusIndex();
-        void emptyVec();
+        void emptyVec() {controls.clear();};
 
         virtual void draw(Graphics& g, int x,int y,size_t z);
         virtual void keyDown(int key,char charecter);
