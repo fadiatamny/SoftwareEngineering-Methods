@@ -9,7 +9,12 @@ class Panel : public Control {
         ~Panel();
 
         bool addControl(Control* control);
-        Control* getControl(int index);
+        Control* getControl(int index) {
+            if(index < 0 || index > controls.size() )
+                return nullptr;
+            return controls[index];
+        }
+        
         int getFoucusIndex();
         void emptyVec() {controls.clear();};
 
