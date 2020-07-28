@@ -15,9 +15,7 @@ bool Panel::addControl(Control *control)
         {
             controls.push_back(control);
             if (getFocus() == nullptr && control->canGetFocus())
-            {
                 setFocus(*control);
-            }
         }
         catch (...)
         {
@@ -63,4 +61,34 @@ int Panel::getFoucusIndex()
 
     focusIndex = -1;
     return -1;
+}
+
+void Panel::draw(Graphics &g, int x, int y, size_t z)
+{
+    int relX;
+    int relY;
+    clacWidthAndHeight();
+    if (z == 0 && this->isShown())
+    {
+        Control::draw(g, x, y, z);
+        for (int i = 0; controls.size() > i; ++i)
+        {
+            relX = controls[i]->getLeft();
+            relY = controls[i]->getTop();
+            g.setBackground(controls[i]->getBackgroundColor());
+            g.setForeground(controls[i]->getColor());
+            controls[focusIndex]->draw(g, x + relX + 1, y + relY + 1, z);
+        }
+    }
+    if (z == 0 && this->isShown())
+    {
+        if (getFocusIndex() != -1)
+        {
+            relX = controls[focusIndex]->getLeft();
+            relY = controls[focusIndex]->getTop();
+            g.setBackground(controls[focusIndex]->getBackgroundColor());
+            g.setForeground(controls[focusIndex]->getColor());
+            controls[focusIndex]->draw(g, x + relX + 1, y + relY + 1, z);
+        }
+    }
 }
