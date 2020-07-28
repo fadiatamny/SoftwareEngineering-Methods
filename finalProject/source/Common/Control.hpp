@@ -36,7 +36,7 @@ public:
 	void setBackgroundColor(const Color color) { this->backgroundColor = color; };
 	void setBorder(Border *border) { this->border = border; };
 	void setShown(const bool value) { this->shown = value; };
-
+	virtual int getFocusIndex() {return -1;};
 
 	virtual void getAllControls(std::vector<Control *> *controls){};
 
