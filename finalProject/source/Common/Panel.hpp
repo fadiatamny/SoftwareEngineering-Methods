@@ -15,7 +15,7 @@ public:
         if (index < 0 || index > controls.size())
             return nullptr;
         return controls[index];
-    }
+    };
 
     int getFoucusIndex();
     void emptyVec() { controls.clear(); };
