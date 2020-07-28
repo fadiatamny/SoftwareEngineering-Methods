@@ -1,7 +1,7 @@
 #pragma once
 #include "vector"
-#include "./Border/Border.hpp"
-#include "./Control.hpp"
+#include "../Common/Border/Border.hpp"
+#include "../Common/Control.hpp"
 
 class Panel : public Control
 {

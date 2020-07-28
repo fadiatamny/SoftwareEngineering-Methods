@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
-#include "./Button.hpp"
-#include "./Border/Border.hpp"
+#include "Button.hpp"
+#include "../Common/Border/Border.hpp"
 #include <string>
 
 class ChackBox :public Button {

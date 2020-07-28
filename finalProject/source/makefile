@@ -12,7 +12,7 @@ CPPFLAGS = -g
 default: $(TARGET)
 all: clean default
 
-OBJECTS += Common/EventEngine.o Common/Graphics.o FinalProject/Source.o Controls/Label.o Common/Border/Border.o Common/Control.o Controls/Button.o
+OBJECTS += Common/EventEngine.o Common/Graphics.o FinalProject/Source.o Controls/Label.o Common/Border/Border.o Common/Control.o Controls/Button.o Controls/Panel.o Controls/CheckBox.o 
 
 %.o: %.cpp
 		$(CXX) $(CPPFLAGS) -c $< -o $@
