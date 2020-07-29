@@ -16,9 +16,9 @@ class ChackBox :public Button {
         void select() {selected =! selected;};
 
         void draw(Graphics &g,int x,int y,size_t z);
-        bool getSelected(return selected);
+        bool getSelected() {return selected;};
 
     private:
         bool selected;
         std::string value;
-}
+};
