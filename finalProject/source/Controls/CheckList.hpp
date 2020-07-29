@@ -43,13 +43,14 @@ public:
     };
     ;
 
-    virtual void draw(Graphics &g, int x, int y, size_t z){
-        if(Control::getFocus() == this)
-            msg.draw(g,x,y,z);
-        for(auto &value : Panel::controls)
-            value->draw(g,value->getLeft(),value->getTop(),z);
+    virtual void draw(Graphics &g, int x, int y, size_t z)
+    {
+        if (Control::getFocus() == this)
+            msg.draw(g, x, y, z);
+        for (auto &value : Panel::controls)
+            value->draw(g, value->getLeft(), value->getTop(), z);
     };
-    
+
     virtual void keyDown(int key, char charecter);
     bool canGetFocus() { return true; };
 
