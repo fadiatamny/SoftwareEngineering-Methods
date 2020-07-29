@@ -12,6 +12,6 @@ void ComboBox::draw(Graphics &g, int x, int y, size_t z)
                 value->draw(g, value->getLeft(), value->getTop(), z);
                 this->margin = margin + 3;
             }
-        text.draw(g, text.getLeft() + 1, text.getTop() + 1, z);
+        labelText.draw(g, labelText.getLeft() + 1, labelText.getTop() + 1, z);
     }
 }
