@@ -11,5 +11,7 @@ class ComboBox :public Panel {
     ~ComboBox();
     void draw(Graphics &g,int x,int y,size_t z);
     void keyDown(int key, char character);
-
+    void addingToList(std::string listItem);
+    void notifying(std::string notify);
+    bool canGetFocus();
 };
