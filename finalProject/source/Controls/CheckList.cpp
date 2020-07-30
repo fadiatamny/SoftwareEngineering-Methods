@@ -2,7 +2,7 @@
 
 void CheckList::keyDown(int key, char character)
 {
-    ChackBox *temp;
+    CheckBox *temp;
 
     int size = Panel::controls.size();
     switch (key)
@@ -14,7 +14,7 @@ void CheckList::keyDown(int key, char character)
             --current;
         for (auto &value : Panel::controls)
             value->setColor(color);
-        temp = dynamic_cast<ChackBox *>(Panel::controls[current]);
+        temp = dynamic_cast<CheckBox *>(Panel::controls[current]);
         if (temp == nullptr)
             return;
         temp->setColor(Color::Green);
@@ -23,7 +23,7 @@ void CheckList::keyDown(int key, char character)
     case VK_SPACE:
         if (current == -1)
             ++current;
-        temp = dynamic_cast<ChackBox *>(Panel::controls[current]);
+        temp = dynamic_cast<CheckBox *>(Panel::controls[current]);
         if (temp == nullptr)
             return;
         temp->select();
@@ -40,7 +40,7 @@ void CheckList::keyDown(int key, char character)
             ++current;
         for (auto &value : Panel::controls)
             value->setColor(color);
-        temp = dynamic_cast<ChackBox *>(Panel::controls[current]);
+        temp = dynamic_cast<CheckBox *>(Panel::controls[current]);
         if (temp == nullptr)
             return;
         temp->setColor(Color::Green);

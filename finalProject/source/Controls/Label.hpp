@@ -4,6 +4,7 @@
 #include "../Common/Subject.hpp"
 #include <string>
 
+
 class Label : public Control, public Subject
 {
 public:

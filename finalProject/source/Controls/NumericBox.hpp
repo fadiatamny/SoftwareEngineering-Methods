@@ -1,10 +1,11 @@
 #pragma once
 
 #include "./Panel.hpp"
-#include "../../Common/Control.hpp"
+#include "../Common/Control.hpp"
 #include "./Button.hpp"
 #include "./Label.hpp"
 #include <string>
+
 
 class NumericBox : public Panel
 {
@@ -23,6 +24,7 @@ public:
     bool setValue(int);
     void draw(Graphics &g, int x, int y, size_t z);
     void notify(std::string text);
+    bool canGetFocus() { return true; };
 
 private:
     int value;

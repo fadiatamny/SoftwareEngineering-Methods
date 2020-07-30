@@ -1,8 +1,9 @@
 #pragma once
 #include <string>
+
 #include "../Common/Control.hpp"
 #include "./Label.hpp"
-#include "../../Common/Graphics.hpp"
+#include "../Common/Graphics.hpp"
 #include "../Common/Border/Border.hpp"
 #include <iostream>
 #include <stdlib.h>

@@ -8,21 +8,22 @@
 class MessageBox : public Panel
 {
 public:
-    string getMessage();
-    void setMessage(string message);
-    string getReturnValue() { return returnValue; };
-    void setShowButton(Button *button);
-    void notify(string text);
-
-    virtual void draw(Graphics &g, int x, int y, size_t z);
-    MessageBox(short left, short top, short width, Border *buttonBorder, Border *border, Color textColor, Color backgroundColor, string message, string ok, string cancel, Button *showButton);
+    MessageBox(short left, short top, short width, Border *buttonBorder, Border *border, Color textColor, Color backgroundColor, std::string message, std::string ok, std::string cancel, Button *showButton);
     ~MessageBox() {}
+
+    void draw(Graphics &g, int x, int y, size_t z);
+    std::string getMessage();
+    void setMessage(std::string message);
+    std::string getReturnValue() { return returnValue; };
+    void setShowButton(Button *button);
+    void notify(std::string text);
+    bool canGetFocus() { return true; };
 
 private:
     Label message;
     Button okButton;
     Button cancel;
-    string returnValue;
+    std::string returnValue;
     Button *showButton;
     bool show;
 };

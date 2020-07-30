@@ -2,7 +2,7 @@
 
 void RadioBox::keyDown(int key, char character)
 {
-    ChackBox *temp;
+    CheckBox *temp;
 
     int size = Panel::controls.size();
     switch (key)
@@ -14,7 +14,7 @@ void RadioBox::keyDown(int key, char character)
             --current;
         for (auto &value : Panel::controls)
             value->setColor(color);
-        temp = dynamic_cast<ChackBox *>(Panel::controls[current]);
+        temp = dynamic_cast<CheckBox *>(Panel::controls[current]);
         if (temp == nullptr)
             return;
         temp->setColor(Color::Green);
@@ -25,7 +25,7 @@ void RadioBox::keyDown(int key, char character)
             ++current;
         for (int i = 0; Panel::controls.size() > i; ++i)
         {
-            temp = dynamic_cast<ChackBox *>(Panel::controls[i]);
+            temp = dynamic_cast<CheckBox *>(Panel::controls[i]);
             if (temp == nullptr)
                 return;
             if (temp->getSelected())
@@ -34,7 +34,7 @@ void RadioBox::keyDown(int key, char character)
                 unselectItem(temp->getValue());
             }
         }
-        temp = dynamic_cast<ChackBox *>(Panel::controls[current]);
+        temp = dynamic_cast<CheckBox *>(Panel::controls[current]);
         if (temp == nullptr)
             return;
         temp->getSelected();
@@ -51,7 +51,7 @@ void RadioBox::keyDown(int key, char character)
             ++current;
         for (auto &value : Panel::controls)
             value->setColor(color);
-        temp = dynamic_cast<ChackBox *>(Panel::controls[current]);
+        temp = dynamic_cast<CheckBox *>(Panel::controls[current]);
         if (temp == nullptr)
             return;
         temp->setColor(Color::Green);

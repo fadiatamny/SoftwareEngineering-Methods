@@ -5,7 +5,7 @@
 #include "../Common/Border/Border.hpp"
 #include "../Common/Border/BorderDoubleLineStyle.hpp"
 #include "../Common/Border/BorderSingleLineStyle.hpp"
-#include "string"
+#include <string>
 
 class ComboBox : public Panel
 {
@@ -28,7 +28,7 @@ public:
     void draw(Graphics &g, int x, int y, size_t z);
     void keyDown(int key, char character);
     void notifying(std::string notify);
-    bool canGetFocus();
+    bool canGetFocus() { return true; }
 
 private:
     int current;

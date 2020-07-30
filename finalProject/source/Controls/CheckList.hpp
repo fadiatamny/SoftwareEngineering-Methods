@@ -13,7 +13,7 @@ public:
 
     virtual void addItemToList(std::string listItem)
     {
-        ChackBox *newItem = new ChackBox(left, this->margin, 11, new BorderSingleLineStyle(), Color::Orange, Color::Black, listItem, this);
+        CheckBox *newItem = new CheckBox(left, this->margin, 11, new BorderSingleLineStyle(), Color::Orange, Color::Black, listItem, this);
         newItem->setActive(false);
         this->width = width + 3;
     };

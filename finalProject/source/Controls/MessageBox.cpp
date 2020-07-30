@@ -1,8 +1,7 @@
 #include "MessageBox.hpp"
 #include <iostream>
 
-using namespace std;
-MessageBox::MessageBox(short left, short top, short width, Border *buttonBorder, Border *border, Color textColor, Color backgroundColor, string message, string ok, string cancel, Button *showButton) : Panel(left + 5, top + 5, border, textColor, backgroundColor),
+MessageBox::MessageBox(short left, short top, short width, Border *buttonBorder, Border *border, Color textColor, Color backgroundColor, std::string message, std::string ok, std::string cancel, Button *showButton) : Panel(left + 5, top + 5, border, textColor, backgroundColor),
                                                                                                                                                                                                          message(Label(message, (width - message.size()) / 2, 0, message.size(), textColor, backgroundColor, buttonBorder)),
                                                                                                                                                                                                          okButton(Button(ok, 0, 4, ok.size(), Color::White, Color::Green, buttonBorder, this)),
                                                                                                                                                                                                          cancel(Button(cancel, width - cancel.size() - 2, 4, 5, Color::White, Color::Red, buttonBorder, this)),
@@ -15,12 +14,12 @@ MessageBox::MessageBox(short left, short top, short width, Border *buttonBorder,
     show = true;
 }
 
-string MessageBox::getMessage()
+std::string MessageBox::getMessage()
 {
     return message.getValue();
 }
 
-void MessageBox::setMessage(string message)
+void MessageBox::setMessage(std::string message)
 {
     this->message.setValue(message);
 }
@@ -40,36 +39,36 @@ void MessageBox::draw(Graphics &g, int x, int y, size_t z)
         relativeX = message.getLeft();
         relativeY = message.getTop();
 
-        if (message.getShow())
+        if (message.isShown())
             message.draw(g, x + relativeX + 1, y + relativeY + 1, z);
         relativeX = okButton.getLeft();
         relativeY = okButton.getTop();
-        if (okButton.getShow())
+        if (okButton.isShown())
             okButton.draw(g, x + relativeX + 1, y + relativeY + 1, z);
         relativeX = cancel.getLeft();
         relativeY = cancel.getTop();
-        if (cancel.getShow())
+        if (cancel.isShown())
             cancel.draw(g, x + relativeX + 1, y + relativeY + 1, z);
     }
 }
 
-void MessageBox::notify(string text)
+void MessageBox::notify(std::string text)
 {
     if (text == "OK")
     {
-        cancel.setShow(false);
-        cancel.setCanClick(false);
+        cancel.setShown(false);
+        cancel.setActive(false);
         returnValue = text;
     }
 
     if (text == "CANCEL")
     {
-        this->setShow(false);
-        cancel.setShow(false);
-        cancel.setCanClick(false);
-        okButton.setShow(false);
-        okButton.setCanClick(false);
-        message.setShow(false);
+        this->setShown(false);
+        cancel.setShown(false);
+        cancel.setActive(false);
+        okButton.setShown(false);
+        okButton.setActive(false);
+        message.setShown(false);
         returnValue = text;
     }
 

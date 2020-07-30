@@ -17,6 +17,7 @@ public:
 
     void draw(Graphics &g, int x, int y, size_t z);
     bool getSelected() { return selected; };
+    bool canGetFocus() { return true; };
 
 private:
     bool selected;

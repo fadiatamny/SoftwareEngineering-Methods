@@ -3,7 +3,7 @@
 TextBox::TextBox(short left, short top, short width, Border *border, Color textColor, Color backgroundColor) : Label("", left, top, width, textColor, backgroundColor, border)
 {
     auto handle = GetStdHandle(STD_OUTPUT_HANDLE);
-    currentCoord = {left + 1 + value.length(), top + 1};
+    currentCoord = {(short)(left + 1 + value.length()), (short)(top + 1)};
     SetConsoleCursorPosition(handle, currentCoord);
 };
 
@@ -25,7 +25,7 @@ void TextBox::keyDown(int keyCode, char character)
         auto offset = currentCoord.X - this->left;
         std::string s;
         s += character;
-        currentCoord = {currentCoord.X + 1, currentCoord.Y};
+        ++currentCoord.X;
         value.insert(offset - 1, &character);
     }
     else if (keyCode == VK_LEFT || keyCode == VK_RIGHT)
@@ -33,12 +33,12 @@ void TextBox::keyDown(int keyCode, char character)
         auto offset = currentCoord.X - this->left;
         if (offset - 1 > 0 && keyCode == VK_LEFT)
         {
-            currentCoord = {currentCoord.X - 1, currentCoord.Y};
+            --currentCoord.X;
             SetConsoleCursorPosition(handle, currentCoord);
         }
         else if (offset - 1 < textWidth && keyCode == VK_RIGHT)
         {
-            currentCoord = {currentCoord.X + 1, currentCoord.Y};
+            ++currentCoord.X;
             SetConsoleCursorPosition(handle, currentCoord);
         }
     }
@@ -53,7 +53,7 @@ void TextBox::keyDown(int keyCode, char character)
             if (offset - 1 > 0)
             {
                 this->value.erase(this->value.begin() + offset - 2);
-                currentCoord = {currentCoord.X - 1, currentCoord.Y};
+                --currentCoord.X;
             }
         }
     }

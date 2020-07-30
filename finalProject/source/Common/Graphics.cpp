@@ -1,7 +1,5 @@
 #include "Graphics.hpp"
 
-using namespace std;
-
 Graphics::Graphics(DWORD stdHandle)
 	: _console(GetStdHandle(stdHandle)), _background(Color::Black), _foreground(Color::White)
 {
@@ -38,23 +36,23 @@ void Graphics::setForeground(Color color)
 	updateConsoleAttributes();
 }
 
-void Graphics::write(string s)
+void Graphics::write(std::string s)
 {
 	WriteConsoleA(_console, s.c_str(), s.size(), nullptr, nullptr);
 }
 
-void Graphics::write(wstring s)
+void Graphics::write(std::wstring s)
 {
 	WriteConsoleW(_console, s.c_str(), s.size(), nullptr, nullptr);
 }
 
-void Graphics::write(int x, int y, string s)
+void Graphics::write(int x, int y, std::string s)
 {
 	moveTo(x, y);
 	write(s);
 }
 
-void Graphics::write(int x, int y, wstring s)
+void Graphics::write(int x, int y, std::wstring s)
 {
 	moveTo(x, y);
 	write(s);
