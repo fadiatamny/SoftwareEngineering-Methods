@@ -15,7 +15,7 @@ public:
 			focus = &control;
 	};
 
-	virtual void draw(Graphics &g, int x, int y, size_t z){};
+	virtual void draw(Graphics &g, int x, int y, size_t z);
 	virtual void keyDown(int keyCode, char charecter){};
 	virtual bool canGetFocus() { return false; };
 	~Control(){};
@@ -25,18 +25,18 @@ public:
 	short getHeight() const { return this->height; };
 	short getLeft() const { return this->left; };
 	short getTop() const { return this->top; };
-	void setLeft(const short left) { this->left = left; };
-	void setTop(const short top) { this->top = top; };
-	void setHeight(const short height) { this->height = height; };
-	void setWidth(const short width) { this->width = width; };
+	void setLeft(const short val) { this->left = val; };
+	void setTop(const short val) { this->top = val; };
+	void setHeight(const short val) { this->height = val; };
+	void setWidth(const short val) { this->width = val; };
 	Color getColor() const { return this->color; };
 	Color getBackgroundColor() const { return this->backgroundColor; };
 	Border *getBorder() const { return this->border; };
-	void setColor(const Color color) { this->color = color; }
-	void setBackgroundColor(const Color color) { this->backgroundColor = color; };
-	void setBorder(Border *border) { this->border = border; };
-	void setShown(const bool value) { this->shown = value; };
-	virtual int getFocusIndex() {return -1;};
+	void setColor(const Color val) { this->color = val; }
+	void setBackgroundColor(const Color val) { this->backgroundColor = val; };
+	void setBorder(Border *val) { this->border = val; };
+	void setShown(const bool val) { this->shown = val; };
+	virtual int getFocusIndex() { return -1; };
 
 	virtual void getAllControls(std::vector<Control *> *controls){};
 
