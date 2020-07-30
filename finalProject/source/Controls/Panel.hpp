@@ -28,7 +28,7 @@ public:
     };
     virtual void getAllControls(std::vector<Control *> *controls)
     {
-        for (int i = 0; this->controls.size(); ++i)
+        for (int i = 0; i < this->controls.size(); ++i)
         {
             controls->push_back(this->controls[i]);
             this->controls[i]->getAllControls(controls);
