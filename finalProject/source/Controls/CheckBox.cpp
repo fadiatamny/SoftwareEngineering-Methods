@@ -13,4 +13,4 @@ void CheckBox::draw(Graphics &g, int x, int y, size_t z)
         setValue("[ ] " + this->value);
     }
     Label::draw(g, left, top, z);
-}
+};

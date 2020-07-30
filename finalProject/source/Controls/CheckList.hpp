@@ -13,8 +13,8 @@ public:
     ~CheckList(){};
 
     virtual void addItemToList(std::string item, Border* border);
-    bool addSelectedItem(std::string item);
-    bool removeSelectedItem(std::string item);
+    bool selectItem(std::string item);
+    bool unselectItem(std::string item);
 
     virtual void draw(Graphics &g, int x, int y, size_t z);
     virtual void keyDown(int keyCode, char charecter);
