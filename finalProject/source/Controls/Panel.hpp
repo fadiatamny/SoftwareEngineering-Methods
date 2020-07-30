@@ -34,9 +34,11 @@ public:
             this->controls[i]->getAllControls(controls);
         }
     };
-    void clacWidthAndHeight();
 
 protected:
     std::vector<Control *> controls;
     int focusIndex;
+
+private:
+    void clacWidthAndHeight();
 };
