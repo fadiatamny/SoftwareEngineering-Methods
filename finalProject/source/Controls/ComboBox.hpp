@@ -11,10 +11,10 @@ class ComboBox : public Panel
 {
 public:
     ComboBox(short x, short y, short width, Border *border, Color colorText, Color color) : Panel(x, y, border, colorText, color),
-                                                                                            labelText("", x + 1, y + 1, 10, colorText, color, new BorderSingleLineStyle()),
-                                                                                            msg("ComBox", x + 2, y - 1, 10, Color::Orange, Color::Black, new BorderDoubleLineStyle()),
+                                                                                            labelText("", x + 1, y + 1, 10, colorText, color, border),
+                                                                                            msg("ComboBox", x + 2, y - 1, 10, Color::Red, Color::White, border),
                                                                                             current(-1),
-                                                                                            margin(top + 6),
+                                                                                            margin(top + 5),
                                                                                             isOpen(false){};
 
     ~ComboBox() {}

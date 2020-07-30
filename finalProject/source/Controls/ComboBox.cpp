@@ -20,17 +20,23 @@ void ComboBox::keyDown(int key, char character)
 {
     Button *temp;
 
-    int size = Panel::controls.size();
+    int size = this->controls.size();
     switch (key)
     {
+    case VK_RETURN:
+        this->isOpen = !this->isOpen;
+        this->setShown(this->isOpen);
+        for (auto &val : this->controls)
+            val->setShown(this->isOpen);
+        break;
     case VK_UP:
         if (current == 0)
             current = size - 1;
         else
             --current;
-        for (auto &value : Panel::controls)
+        for (auto &value : this->controls)
             value->setColor(color);
-        temp = dynamic_cast<Button *>(Panel::controls[current]);
+        temp = dynamic_cast<Button *>(this->controls[current]);
         if (temp == nullptr)
             return;
         temp->setColor(Color::Green);
@@ -39,14 +45,14 @@ void ComboBox::keyDown(int key, char character)
     case VK_SPACE:
         if (current == -1)
             ++current;
-        temp = dynamic_cast<Button *>(Panel::controls[current]);
+        temp = dynamic_cast<Button *>(this->controls[current]);
         if (temp == nullptr)
             return;
+        this->isOpen = false;
+        this->setShown(this->isOpen);
+        for (auto &val : this->controls)
+            val->setShown(this->isOpen);
         this->labelText.setValue(temp->getValue());
-        this->isOpen = !this->isOpen;
-        this->setShown(false);
-        for (auto &val : Panel::controls)
-            val->setShown(false);
         break;
 
     case VK_DOWN:
@@ -54,9 +60,9 @@ void ComboBox::keyDown(int key, char character)
             current = 0;
         else
             ++current;
-        for (auto &value : Panel::controls)
+        for (auto &value : this->controls)
             value->setColor(color);
-        temp = dynamic_cast<Button *>(Panel::controls[current]);
+        temp = dynamic_cast<Button *>(this->controls[current]);
         if (temp == nullptr)
             return;
         temp->setColor(Color::Green);
@@ -96,9 +102,9 @@ void ComboBox::notifying(std::string item)
     }
 }
 
-void ComboBox::addingToList(std::string listItem, Border* border)
+void ComboBox::addingToList(std::string listItem, Border *border)
 {
-    Button *button = new Button(listItem, left - 3, this->margin, 10, color, backgroundColor, border, this);
+    Button *button = new Button(listItem, this->left + 2, this->margin, 10, color, backgroundColor, border, this);
     button->setShown(false);
     button->setActive(false);
     this->addControl(button);
