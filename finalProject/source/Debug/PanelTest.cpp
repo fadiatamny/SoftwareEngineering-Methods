@@ -15,7 +15,6 @@ int main(int argc, char **argv)
 	p.addControl(&l1);
 	p.addControl(&l2);
 
-	Control &c = p;
 	EventEngine e;
-	e.run(c);
+	e.run(p);
 }

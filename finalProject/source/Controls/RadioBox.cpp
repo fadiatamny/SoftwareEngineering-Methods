@@ -1,60 +1,62 @@
-// #include "./RadioBox.hpp"
+#include "./RadioBox.hpp"
 
-// void RadioBox::keyDown(int key, char character)
-// {
-//     CheckBox *temp;
+void RadioBox::keyDown(int key, char character)
+{
+    CheckBox *temp;
 
-//     int size = Panel::controls.size();
-//     switch (key)
-//     {
-//     case VK_UP:
-//         if (current == 0)
-//             current = size - 1;
-//         else
-//             --current;
-//         for (auto &value : Panel::controls)
-//             value->setColor(color);
-//         temp = dynamic_cast<CheckBox *>(Panel::controls[current]);
-//         if (temp == nullptr)
-//             return;
-//         temp->setColor(Color::Green);
-//         break;
+    int size = this->controls.size();
+    switch (key)
+    {
+    case VK_UP:
+        if (this->current == 0)
+            this->current = size - 1;
+        else
+            --this->current;
+        for (auto &value : this->controls)
+            value->setColor(color);
+        temp = dynamic_cast<CheckBox *>(this->controls[this->current]);
+        if (temp == nullptr)
+            return;
+        temp->setColor(Color::Green);
+        break;
 
-//     case VK_SPACE:
-//         if (current == -1)
-//             ++current;
-//         for (int i = 0; Panel::controls.size() > i; ++i)
-//         {
-//             temp = dynamic_cast<CheckBox *>(Panel::controls[i]);
-//             if (temp == nullptr)
-//                 return;
-//             if (temp->getSelected())
-//             {
-//                 temp->getSelected();
-//                 unselectItem(temp->getValue());
-//             }
-//         }
-//         temp = dynamic_cast<CheckBox *>(Panel::controls[current]);
-//         if (temp == nullptr)
-//             return;
-//         temp->getSelected();
-//         if (temp->getSelected())
-//             selectItem(temp->getValue());
-//         else
-//             unselectItem(temp->getValue());
-//         break;
+    case VK_SPACE:
+        if (this->current == -1)
+            ++this->current;
 
-//     case VK_DOWN:
-//         if (current == size - 1)
-//             current = 0;
-//         else
-//             ++current;
-//         for (auto &value : Panel::controls)
-//             value->setColor(color);
-//         temp = dynamic_cast<CheckBox *>(Panel::controls[current]);
-//         if (temp == nullptr)
-//             return;
-//         temp->setColor(Color::Green);
-//         break;
-//     };
-// };
+        for(auto control : this->controls)
+        {
+            temp = dynamic_cast<CheckBox *>(control);
+            if(temp->getSelected())
+            {
+                temp->select();
+                unselectItem(temp->getValue());
+            }
+        }
+        temp = dynamic_cast<CheckBox *>(this->controls[this->current]);
+        if (temp == nullptr)
+            return;
+        temp->select();
+        if (temp->getSelected())
+            selectItem(temp->getValue());
+        else
+            unselectItem(temp->getValue());
+        break;
+
+    case VK_DOWN:
+        if (this->current == size - 1)
+            this->current = 0;
+        else
+            ++this->current;
+        for (auto &value : Panel::controls)
+            value->setColor(color);
+        temp = dynamic_cast<CheckBox *>(Panel::controls[this->current]);
+        if (temp == nullptr)
+            return;
+        temp->setColor(Color::Green);
+        break;
+
+    default:
+        break;
+    };
+};
