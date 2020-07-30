@@ -31,6 +31,8 @@ void ComboBox::keyDown(int key, char character)
         for (auto &value : Panel::controls)
             value->setColor(color);
         temp = dynamic_cast<Button *>(Panel::controls[current]);
+        if (temp == nullptr)
+            return;
         temp->setColor(Color::Green);
         break;
 
@@ -38,6 +40,8 @@ void ComboBox::keyDown(int key, char character)
         if (current == -1)
             ++current;
         temp = dynamic_cast<Button *>(Panel::controls[current]);
+        if (temp == nullptr)
+            return;
         this->labelText.setValue(temp->getValue());
         this->isOpen = !this->isOpen;
         this->setShown(false);
@@ -53,6 +57,8 @@ void ComboBox::keyDown(int key, char character)
         for (auto &value : Panel::controls)
             value->setColor(color);
         temp = dynamic_cast<Button *>(Panel::controls[current]);
+        if (temp == nullptr)
+            return;
         temp->setColor(Color::Green);
         break;
 
@@ -63,31 +69,29 @@ void ComboBox::keyDown(int key, char character)
 
 void ComboBox::notifying(std::string item)
 {
-    if(item.compare(" +")==0)
+    if (item.compare(" +") == 0)
     {
-        if(this->isOpen)
+        if (this->isOpen)
         {
             this->isOpen = !this->isOpen;
             this->setShown(false);
-            for(auto &val : Panel::controls)
-              val->setShown(false);
+            for (auto &val : Panel::controls)
+                val->setShown(false);
         }
         else
         {
             this->setShown(true);
             this->isOpen = !this->isOpen;
-            for(auto &val :Panel::controls)
+            for (auto &val : Panel::controls)
                 val->setShown(false);
         }
-        
     }
     else
     {
         this->labelText.setValue(item);
         this->isOpen = !this->isOpen;
         this->setShown(false);
-        for(auto &val :Panel::controls)
+        for (auto &val : Panel::controls)
             val->setShown(false);
     }
-    
 }

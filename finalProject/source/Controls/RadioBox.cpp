@@ -15,24 +15,30 @@ void RadioBox::keyDown(int key, char character)
         for (auto &value : Panel::controls)
             value->setColor(color);
         temp = dynamic_cast<ChackBox *>(Panel::controls[current]);
+        if (temp == nullptr)
+            return;
         temp->setColor(Color::Green);
         break;
 
     case VK_SPACE:
         if (current == -1)
             ++current;
-        for(int i=0;Panel::controls.size()>i;++i)
+        for (int i = 0; Panel::controls.size() > i; ++i)
         {
             temp = dynamic_cast<ChackBox *>(Panel::controls[i]);
-            if(temp->getSelected())
+            if (temp == nullptr)
+                return;
+            if (temp->getSelected())
             {
                 temp->getSelected();
                 unselectItem(temp->getValue());
             }
         }
         temp = dynamic_cast<ChackBox *>(Panel::controls[current]);
+        if (temp == nullptr)
+            return;
         temp->getSelected();
-        if(temp->getSelected())
+        if (temp->getSelected())
             selectItem(temp->getValue());
         else
             unselectItem(temp->getValue());
@@ -46,10 +52,9 @@ void RadioBox::keyDown(int key, char character)
         for (auto &value : Panel::controls)
             value->setColor(color);
         temp = dynamic_cast<ChackBox *>(Panel::controls[current]);
+        if (temp == nullptr)
+            return;
         temp->setColor(Color::Green);
-        break;
-
-    default:
         break;
     };
 };

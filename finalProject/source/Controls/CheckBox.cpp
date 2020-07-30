@@ -1,11 +1,12 @@
 #include "CheckBox.hpp"
 
-CheckBox::draw(Graphics &g,int x,int y,size_t z)[
+void CheckBox::draw(Graphics &g, int x, int y, size_t z)
+{
     std::string select = "[x] ";
-    std:: string notSelect = "[ ] ";
-    if(selected)
-        setValue(selected + value);
+    std::string notSelect = "[ ] ";
+    if (selected)
+        setValue(select + this->value);
     else
-        setValue(notSelect + vlaue);
-    Label::draw(g,left,top,z);
-]
+        setValue(notSelect + this->value);
+    Label::draw(g, left, top, z);
+};

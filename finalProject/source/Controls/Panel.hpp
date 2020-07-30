@@ -7,23 +7,24 @@ class Panel : public Control
 {
 public:
     Panel(short x, short y, Border *border, Color textC, Color backgroundColor);
-    ~Panel();
+    ~Panel() {}
 
     bool addControl(Control *control);
     Control *getControl(int index)
     {
-        if (index < 0 || index > controls.size())
+        if (index < 0 || index > this->controls.size())
             return nullptr;
-        return controls[index];
+        return this->controls[index];
     };
 
     int getFoucusIndex();
     void emptyVec() { controls.clear(); };
 
     virtual void draw(Graphics &g, int x, int y, size_t z);
-    virtual void keyDown(int key, char charecter) {
+    virtual void keyDown(int key, char charecter)
+    {
         if (getFocusIndex() != -1)
-            controls[focusIndex]->keyDown(key,charecter);
+            controls[focusIndex]->keyDown(key, charecter);
     };
     virtual void getAllControls(std::vector<Control *> *controls)
     {

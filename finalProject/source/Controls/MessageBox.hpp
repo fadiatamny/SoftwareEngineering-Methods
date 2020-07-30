@@ -7,14 +7,6 @@
 
 class MessageBox : public Panel
 {
-private:
-    Label message;
-    Button okButton;
-    Button cancel;
-    string returnValue;
-    Button *showButton;
-    bool show;
-
 public:
     string getMessage();
     void setMessage(string message);
@@ -23,6 +15,14 @@ public:
     void notify(string text);
 
     virtual void draw(Graphics &g, int x, int y, size_t z);
-    MessageBox(short left, short top, short width, BorderDrawer *buttonBorder, BorderDrawer *border, Color textColor, Color backgroundColor, string message, string ok, string cancel, Button *showButton);
+    MessageBox(short left, short top, short width, Border *buttonBorder, Border *border, Color textColor, Color backgroundColor, string message, string ok, string cancel, Button *showButton);
     ~MessageBox() {}
+
+private:
+    Label message;
+    Button okButton;
+    Button cancel;
+    string returnValue;
+    Button *showButton;
+    bool show;
 };

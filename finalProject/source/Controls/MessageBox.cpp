@@ -2,12 +2,11 @@
 #include <iostream>
 
 using namespace std;
-MessageBox::MessageBox(short left, short top, short width, BorderDrawer *buttonBorder, BorderDrawer *border, Color textColor, Color backgroundColor, string message, string ok, string cancel, Button *showButton)
-    : Panel(left + 5, top + 5, border, textColor, backgroundColor),
-      message(Label((width - message.size()) / 2, 0, message.size(), buttonBorder, textColor, backgroundColor, message)),
-      okButton(Button(0, 4, ok.size(), buttonBorder, Color::White, Color::Green, ok, this)),
-      cancel(Button(width - cancel.size() - 2, 4, 5, buttonBorder, Color::White, Color::Red, cancel, this)),
-      showButton(showButton)
+MessageBox::MessageBox(short left, short top, short width, Border *buttonBorder, Border *border, Color textColor, Color backgroundColor, string message, string ok, string cancel, Button *showButton) : Panel(left + 5, top + 5, border, textColor, backgroundColor),
+                                                                                                                                                                                                         message(Label(message, (width - message.size()) / 2, 0, message.size(), textColor, backgroundColor, buttonBorder)),
+                                                                                                                                                                                                         okButton(Button(ok, 0, 4, ok.size(), Color::White, Color::Green, buttonBorder, this)),
+                                                                                                                                                                                                         cancel(Button(cancel, width - cancel.size() - 2, 4, 5, Color::White, Color::Red, buttonBorder, this)),
+                                                                                                                                                                                                         showButton(showButton)
 {
     Panel::addControl(&this->message);
     Panel::addControl(&this->okButton);

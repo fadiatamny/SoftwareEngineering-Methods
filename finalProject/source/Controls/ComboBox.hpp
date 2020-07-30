@@ -17,12 +17,13 @@ public:
                                                                                             margin(top + 6),
                                                                                             isOpen(false){};
 
-    ~ComboBox();
-    void addingToList(std::string listItem){
-        Button *button = new Button(listItem,left-3, this->margin, 10,color, backgroundColor, new BorderSingleLineStyle(), this);
+    ~ComboBox() {}
+    void addingToList(std::string listItem)
+    {
+        Button *button = new Button(listItem, left - 3, this->margin, 10, color, backgroundColor, new BorderSingleLineStyle(), this);
         button->setShown(false);
         button->setActive(false);
-        this->margin-3;
+        this->margin - 3;
     };
     void draw(Graphics &g, int x, int y, size_t z);
     void keyDown(int key, char character);

@@ -12,6 +12,6 @@ public:
     void setValue(std::string value) { this->value = value; };
     void draw(Graphics &g, int x, int y, size_t z);
 
-private:
+protected:
     std::string value;
 };

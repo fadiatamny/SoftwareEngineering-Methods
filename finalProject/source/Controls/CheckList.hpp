@@ -9,11 +9,7 @@ class CheckList : public Panel
 public:
     CheckList(short x, short y, short width, Border *border, Color colorText, Color color, std::string text) : Panel(x, y, border, colorText, color), margin(y + 4), current(-1), msg(text, x, y, width, colorText, color, border){};
 
-    ~CheckList()
-    {
-        if (border)
-            delete border;
-    };
+    ~CheckList(){};
 
     virtual void addItemToList(std::string listItem)
     {

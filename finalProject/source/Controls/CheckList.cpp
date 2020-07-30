@@ -15,6 +15,8 @@ void CheckList::keyDown(int key, char character)
         for (auto &value : Panel::controls)
             value->setColor(color);
         temp = dynamic_cast<ChackBox *>(Panel::controls[current]);
+        if (temp == nullptr)
+            return;
         temp->setColor(Color::Green);
         break;
 
@@ -22,6 +24,8 @@ void CheckList::keyDown(int key, char character)
         if (current == -1)
             ++current;
         temp = dynamic_cast<ChackBox *>(Panel::controls[current]);
+        if (temp == nullptr)
+            return;
         temp->select();
         if (temp->getSelected())
             selectItem(temp->getValue());
@@ -37,6 +41,8 @@ void CheckList::keyDown(int key, char character)
         for (auto &value : Panel::controls)
             value->setColor(color);
         temp = dynamic_cast<ChackBox *>(Panel::controls[current]);
+        if (temp == nullptr)
+            return;
         temp->setColor(Color::Green);
         break;
 

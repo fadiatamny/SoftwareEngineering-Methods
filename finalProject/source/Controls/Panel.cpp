@@ -5,8 +5,6 @@ Panel::Panel(short x, short y, Border *border, Color textC, Color backgroundColo
     clacWidthAndHeight();
 }
 
-Panel::~Panel() {}
-
 bool Panel::addControl(Control *control)
 {
     if (control != nullptr)

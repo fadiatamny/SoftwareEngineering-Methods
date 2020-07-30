@@ -1,33 +1,35 @@
 #include "./NumericBox.hpp"
 
-NumericBox::NumericBox(short left, short top, int maxVal, int minVal, BorderDrawer *border, Color textColor, Color backgroundColor) : Panel(left, top, border, textColor, backgroundColor), currVal(Label(left + 7, top + 2, 3, border, textColor, backgroundColor, " 0 ")), add(Button(left + 14, top + 2, 1, border, textColor, backgroundColor, " + ", this)), subtract(Button(left + 2, top + 2, 1, border, textColor, backgroundColor, " - ", this)), maxVal(maxVal), minVal(minVal), value(0)
+NumericBox::NumericBox(short left, short top, int maxVal, int minVal, Border *border, Color textColor, Color backgroundColor) : Panel(left, top, border, textColor, backgroundColor), currVal(Label(" 0 ", left + 7, top + 2, 3, textColor, backgroundColor, border)),
+                                                                                                                                add(Button(" + ", left + 14, top + 2, 1, textColor, backgroundColor, border, this)),
+                                                                                                                                subtract(Button(" - ", left + 2, top + 2, 1, textColor, backgroundColor, border, this)),
+                                                                                                                                maxVal(maxVal),
+                                                                                                                                minVal(minVal),
+                                                                                                                                value(0)
 {
     Panel::addControl(&this->add);
     Panel::addControl(&this->subtract);
     Panel::addControl(&this->currVal);
 }
 
-NumericBox::~NumericBox()
-{
-}
 void NumericBox::increase()
 {
-    string strVal = " ";
+    std::string strVal = " ";
 
     if (value < maxVal)
     {
         ++value;
-        currVal.setValue(strVal + to_string(value));
+        currVal.setValue(strVal + std::to_string(value));
     }
 }
 void NumericBox::decrease()
 {
-    string strVal = " ";
+    std::string strVal = " ";
 
     if (value > minVal)
     {
         --value;
-        currVal.setValue(strVal + to_string(value));
+        currVal.setValue(strVal + std::to_string(value));
     }
 }
 
@@ -38,7 +40,7 @@ int NumericBox::getVal()
 
 void NumericBox::setVal(int val)
 {
-    string strVal = " ";
+    std::string strVal = " ";
     if (val > maxVal)
     {
         val = maxVal;
@@ -48,7 +50,7 @@ void NumericBox::setVal(int val)
         val = minVal;
     }
 
-    currVal.setValue(strVal + to_string(value));
+    currVal.setValue(strVal + std::to_string(value));
 }
 
 int NumericBox::getMin()
@@ -100,7 +102,7 @@ void NumericBox::draw(Graphics &g, int x, int y, size_t z)
     }
 }
 
-void NumericBox::notify(string text)
+void NumericBox::notify(std::string text)
 {
     if (text == " + ")
     {
