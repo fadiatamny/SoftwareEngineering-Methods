@@ -2,9 +2,15 @@
 
 void CheckBox::draw(Graphics &g, int x, int y, size_t z)
 {
+    std::string selected = "[X] ";
+    std::string notSelected = "[ ] ";
     if (this->selected)
-        this->setValue("[x] " + this->value);
+    {
+        setValue("[X] " + this->value);
+    }
     else
-        this->setValue("[ ] " + this->value);
-    Button::draw(g, left, top, z);
-};
+    {
+        setValue("[ ] " + this->value);
+    }
+    Label::draw(g, left, top, z);
+}
