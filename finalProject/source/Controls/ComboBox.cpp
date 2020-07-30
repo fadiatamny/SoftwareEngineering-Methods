@@ -95,3 +95,12 @@ void ComboBox::notifying(std::string item)
             val->setShown(false);
     }
 }
+
+void ComboBox::addingToList(std::string listItem, Border* border)
+{
+    Button *button = new Button(listItem, left - 3, this->margin, 10, color, backgroundColor, border, this);
+    button->setShown(false);
+    button->setActive(false);
+    this->addControl(button);
+    this->margin += 3;
+};

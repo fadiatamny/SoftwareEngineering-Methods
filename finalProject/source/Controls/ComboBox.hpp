@@ -18,13 +18,7 @@ public:
                                                                                             isOpen(false){};
 
     ~ComboBox() {}
-    void addingToList(std::string listItem)
-    {
-        Button *button = new Button(listItem, left - 3, this->margin, 10, color, backgroundColor, new BorderSingleLineStyle(), this);
-        button->setShown(false);
-        button->setActive(false);
-        this->margin - 3;
-    };
+    void addingToList(std::string listItem, Border *border);
     void draw(Graphics &g, int x, int y, size_t z);
     void keyDown(int key, char character);
     void notifying(std::string notify);
