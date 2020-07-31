@@ -4,7 +4,8 @@ void TextBox::draw(Graphics &g, int x, int y, size_t z)
 {
     Label::draw(g, x + 1, y + 1, z);
     g.moveTo(currentCoord.X + 2, currentCoord.Y + 2);
-    g.setCursorVisibility(true);
+    if (this->getFocus() == this)
+        g.setCursorVisibility(true);
 }
 
 void TextBox::handleStringInput(char c)
@@ -45,10 +46,8 @@ void TextBox::keyDown(int keyCode, char character)
 {
     if ((keyCode >= 0x30 && keyCode <= 122) || keyCode == VK_SPACE)
         this->handleStringInput(character);
-
-    if (keyCode == VK_LEFT || keyCode == VK_RIGHT)
+    else if (keyCode == VK_LEFT || keyCode == VK_RIGHT)
         this->handleRepositionHori(keyCode);
-
-    if (value.length() > 0 && (keyCode == VK_BACK || keyCode == VK_DELETE))
+    else if (value.length() > 0 && (keyCode == VK_BACK || keyCode == VK_DELETE))
         this->handleStringDelete(keyCode);
 }

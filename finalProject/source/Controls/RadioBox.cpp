@@ -24,10 +24,10 @@ void RadioBox::keyDown(int key, char character)
         if (this->current == -1)
             ++this->current;
 
-        for(auto control : this->controls)
+        for (auto control : this->controls)
         {
             temp = dynamic_cast<CheckBox *>(control);
-            if(temp->getSelected())
+            if (temp->getSelected())
             {
                 temp->select();
                 unselectItem(temp->getValue());
@@ -54,9 +54,6 @@ void RadioBox::keyDown(int key, char character)
         if (temp == nullptr)
             return;
         temp->setColor(Color::Green);
-        break;
-
-    default:
         break;
     };
 };

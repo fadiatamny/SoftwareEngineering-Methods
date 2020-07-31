@@ -53,9 +53,6 @@ void CheckList::keyDown(int key, char character)
             return;
         temp->setColor(this->highlight);
         break;
-
-    default:
-        break;
     };
 };
 

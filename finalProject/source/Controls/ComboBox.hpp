@@ -11,8 +11,8 @@ class ComboBox : public Panel
 {
 public:
     ComboBox(short x, short y, short width, Border *border, Color color, Color backgroundColor, Color highlight) : Panel(x, y, border, color, backgroundColor),
-                                                                                                                   labelText("", x + 1, y + 1, 10, color, backgroundColor, border),
-                                                                                                                   msg("ComboBox", x + 2, y - 1, 10, color, backgroundColor, border),
+                                                                                                                   labelText("", x + 1, y + 1, 8, color, backgroundColor, border),
+                                                                                                                   msg("ComboBox", x + 2, y - 1, 8, color, backgroundColor, border),
                                                                                                                    current(-1),
                                                                                                                    margin(top + 5),
                                                                                                                    isOpen(false),
