@@ -10,3 +10,7 @@
 
 - some elemnts wont highlight instead they change main background causing "nice" ~visual effects~.
 - The position marker flickers when moving in textbox
+
+
+#### How demo works
+![](./source/FinalProject/images/DEMO.png)
