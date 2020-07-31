@@ -4,13 +4,12 @@ void ComboBox::draw(Graphics &g, int x, int y, size_t z)
 {
     if (z == 0)
     {
-        if (Control::getFocus() == this)
-            msg.draw(g, msg.getLeft(), msg.getTop(), z);
+        msg.draw(g, msg.getLeft(), msg.getTop(), z);
         if (this->isShown())
             for (auto &value : Panel::controls)
             {
                 value->draw(g, value->getLeft(), value->getTop(), z);
-                this->margin = margin + 3;
+                this->margin = margin + 5;
             }
         labelText.draw(g, labelText.getLeft() + 1, labelText.getTop() + 1, z);
     }
@@ -39,7 +38,7 @@ void ComboBox::keyDown(int key, char character)
         temp = dynamic_cast<Button *>(this->controls[current]);
         if (temp == nullptr)
             return;
-        temp->setColor(Color::Green);
+        temp->setColor(this->highlight);
         break;
 
     case VK_SPACE:
@@ -65,7 +64,7 @@ void ComboBox::keyDown(int key, char character)
         temp = dynamic_cast<Button *>(this->controls[current]);
         if (temp == nullptr)
             return;
-        temp->setColor(Color::Green);
+        temp->setColor(this->highlight);
         break;
 
     default:
@@ -75,7 +74,7 @@ void ComboBox::keyDown(int key, char character)
 
 void ComboBox::addingToList(std::string listItem, Border *border)
 {
-    Button *button = new Button(listItem, this->left + 2, this->margin, 10, color, backgroundColor, border, this);
+    Button *button = new Button(listItem, this->left + 2, this->margin, this->labelText.getWidth(), color, backgroundColor, border, this, 1);
     button->setShown(false);
     button->setActive(false);
     this->addControl(button);

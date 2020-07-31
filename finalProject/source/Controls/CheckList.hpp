@@ -6,13 +6,14 @@
 class CheckList : public Panel
 {
 public:
-    CheckList(short x, short y, short width, Border *border, Color colorText, Color color, std::string text) : Panel(x, y, border, colorText, color),
-                                                                                                                          margin(y + 4),
-                                                                                                                          current(-1),
-                                                                                                                          title(text, x, y, width, colorText, color, border){};
+    CheckList(short x, short y, short width, Border *border, Color color, Color backgroundColor, Color highlight, std::string text) : Panel(x, y, border, color, backgroundColor),
+                                                                                                                                      margin(y + 4),
+                                                                                                                                      current(-1),
+                                                                                                                                      title(text, x, y, width, color, backgroundColor, border),
+                                                                                                                                      highlight(highlight){};
     ~CheckList(){};
 
-    virtual void addItemToList(std::string item, Border* border);
+    virtual void addItemToList(std::string item, Border *border);
     bool selectItem(std::string item);
     bool unselectItem(std::string item);
 
@@ -25,4 +26,5 @@ protected:
     int margin;
     int current;
     Label title;
+    Color highlight;
 };

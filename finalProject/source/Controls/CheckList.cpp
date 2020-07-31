@@ -2,7 +2,7 @@
 
 void CheckList::addItemToList(std::string listItem, Border *border)
 {
-    CheckBox *box = new CheckBox(this->left, this->margin, 10, border, Color::Cyan, Color::White, listItem, this);
+    CheckBox *box = new CheckBox(this->left, this->margin, this->title.getWidth(), border, Color::Cyan, Color::White, listItem, this);
     box->setActive(false);
     this->addControl(box);
     this->margin += 3;
@@ -25,7 +25,7 @@ void CheckList::keyDown(int key, char character)
         temp = dynamic_cast<CheckBox *>(this->controls[this->current]);
         if (temp == nullptr)
             return;
-        temp->setColor(Color::Green);
+        temp->setColor(this->highlight);
         break;
 
     case VK_SPACE:
@@ -51,7 +51,7 @@ void CheckList::keyDown(int key, char character)
         temp = dynamic_cast<CheckBox *>(Panel::controls[this->current]);
         if (temp == nullptr)
             return;
-        temp->setColor(Color::Green);
+        temp->setColor(this->highlight);
         break;
 
     default:
@@ -62,7 +62,7 @@ void CheckList::keyDown(int key, char character)
 void CheckList::draw(Graphics &g, int x, int y, size_t z)
 {
 
-    this->title.draw(g, x-1, y, z);
+    this->title.draw(g, x - 1, y, z);
     for (auto value : this->controls)
     {
         value->draw(g, value->getLeft(), value->getTop(), z);
