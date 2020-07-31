@@ -2,7 +2,7 @@
 
 void Button::keyDown(int keyCode, char character)
 {
-    if (keyCode == VK_SPACE)
+    if (this->active && keyCode == VK_SPACE)
     {
         performAction(this->getValue());
     }

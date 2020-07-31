@@ -21,7 +21,6 @@ public:
     void addingToList(std::string listItem, Border *border);
     void draw(Graphics &g, int x, int y, size_t z);
     void keyDown(int key, char character);
-    void notifying(std::string notify);
     bool canGetFocus() { return true; }
 
 private:

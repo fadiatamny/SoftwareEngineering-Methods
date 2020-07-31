@@ -12,8 +12,8 @@ public:
             addObserver(ob);
     };
     void keyDown(int keyCode, char character);
-    bool canGetFocus() const { return this->active; };
-    void setActive(bool val) { this->active = active; };
+    bool canGetFocus() { return this->active; };
+    void setActive(bool val) { this->active = val; };
 
 private:
     bool active = true;

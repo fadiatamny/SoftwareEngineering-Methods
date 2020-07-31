@@ -73,35 +73,6 @@ void ComboBox::keyDown(int key, char character)
     };
 };
 
-void ComboBox::notifying(std::string item)
-{
-    if (item.compare(" +") == 0)
-    {
-        if (this->isOpen)
-        {
-            this->isOpen = !this->isOpen;
-            this->setShown(false);
-            for (auto &val : Panel::controls)
-                val->setShown(false);
-        }
-        else
-        {
-            this->setShown(true);
-            this->isOpen = !this->isOpen;
-            for (auto &val : Panel::controls)
-                val->setShown(false);
-        }
-    }
-    else
-    {
-        this->labelText.setValue(item);
-        this->isOpen = !this->isOpen;
-        this->setShown(false);
-        for (auto &val : Panel::controls)
-            val->setShown(false);
-    }
-}
-
 void ComboBox::addingToList(std::string listItem, Border *border)
 {
     Button *button = new Button(listItem, this->left + 2, this->margin, 10, color, backgroundColor, border, this);

@@ -13,14 +13,16 @@ public:
                                                                                                          curr((max + min) / 2),
                                                                                                          valueText(Label(" ", x + 20, y, 3, color, backgroundColor, border)),
                                                                                                          addBtn(Button(" + ", x + 10, y + 5, 1, color, backgroundColor, border, this)),
-                                                                                                         subBtn(Button(" - ", x + 50, y + 5, 1, color, backgroundColor, border, this)),
+                                                                                                         subBtn(Button(" - ", x + 30, y + 5, 1, color, backgroundColor, border, this)),
                                                                                                          maxNum(max),
                                                                                                          minNum(min)
     {
         this->valueText.setValue(std::to_string(this->curr));
-        Panel::addControl(&this->addBtn);
-        Panel::addControl(&this->subBtn);
-        Panel::addControl(&this->valueText);
+        this->addControl(&this->addBtn);
+        this->addControl(&this->subBtn);
+        this->addControl(&this->valueText);
+        this->addBtn.setActive(true);
+        this->subBtn.setActive(true);
     }
 
     ~NumericBox() {}
