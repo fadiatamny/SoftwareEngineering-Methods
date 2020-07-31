@@ -24,7 +24,8 @@ int main(int argc, char **argv)
 	cb.addingToList("Combo", &sb);
 	p.addControl(&cb);
 
-	MessageBoxPopup msb();
+	// Button b();
+	// MessageBoxPopup msb();
 	// NumericBox nm();
 	// RadioBox rb();
 	// TextBox tb();
