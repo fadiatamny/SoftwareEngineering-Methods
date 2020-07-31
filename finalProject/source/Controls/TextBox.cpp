@@ -1,67 +1,54 @@
-// #include "TextBox.hpp"
+#include "TextBox.hpp"
 
-// TextBox::TextBox(short left, short top, short width, Border *border, Color textColor, Color backgroundColor) : Label("", left, top, width, textColor, backgroundColor, border)
-// {
-//     auto handle = GetStdHandle(STD_OUTPUT_HANDLE);
-//     currentCoord = {(short)(left + 1 + value.length()), (short)(top + 1)};
-//     SetConsoleCursorPosition(handle, currentCoord);
-// };
+void TextBox::draw(Graphics &g, int x, int y, size_t z)
+{
+    Label::draw(g, x + 1, y + 1, z);
+    g.moveTo(currentCoord.X + 2, currentCoord.Y + 2);
+    g.setCursorVisibility(true);
+}
 
-// void TextBox::setText(std::string text)
-// {
-//     if (text.length() <= this->width)
-//         value = text;
-// };
+void TextBox::handleStringInput(char c)
+{
+    if (this->offset >= this->width && this->value.length() >= this->width)
+        return;
+    this->value.replace(this->offset, this->offset, &c);
+    this->offset++;
+    ++this->currentCoord.X;
+}
 
-// void TextBox::keyDown(int keyCode, char character)
-// {
-//     int textWidth = this->value.length();
-//     auto handle = GetStdHandle(STD_OUTPUT_HANDLE);
+void TextBox::handleRepositionHori(int keyCode)
+{
+    if (this->offset - 1 >= 0 && keyCode == VK_LEFT)
+    {
+        --this->currentCoord.X;
+        --this->offset;
+    }
+    else if (this->offset - 1 < value.length() && keyCode == VK_RIGHT)
+    {
+        ++this->currentCoord.X;
+        ++this->offset;
+    }
+}
 
-//     if ((keyCode >= 0x30 && keyCode <= 0x7A) || keyCode == VK_SPACE)
-//     {
-//         if (textWidth >= this->width)
-//             return;
-//         auto offset = currentCoord.X - this->left;
-//         std::string s;
-//         s += character;
-//         ++currentCoord.X;
-//         value.insert(offset - 1, &character);
-//     }
-//     else if (keyCode == VK_LEFT || keyCode == VK_RIGHT)
-//     {
-//         auto offset = currentCoord.X - this->left;
-//         if (offset - 1 > 0 && keyCode == VK_LEFT)
-//         {
-//             --currentCoord.X;
-//             SetConsoleCursorPosition(handle, currentCoord);
-//         }
-//         else if (offset - 1 < textWidth && keyCode == VK_RIGHT)
-//         {
-//             ++currentCoord.X;
-//             SetConsoleCursorPosition(handle, currentCoord);
-//         }
-//     }
-//     else if (textWidth > 0 && (keyCode == VK_BACK || keyCode == VK_DELETE))
-//     {
-//         auto offset = currentCoord.X - this->left;
-//         if (keyCode == VK_DELETE && offset - 1 < this->value.length())
-//             this->value.erase(this->value.begin() + offset - 1);
+void TextBox::handleStringDelete(int keyCode)
+{
+    if (keyCode == VK_BACK && this->value.length() > 0 && offset - 1 >= 0)
+    {
+        char c = '\0';
+        this->value.replace(this->offset - 1, this->offset - 1, &c);
+        --this->currentCoord.X;
+        --this->offset;
+    }
+}
 
-//         else if (keyCode == VK_BACK && this->value.length() > 0)
-//         {
-//             if (offset - 1 > 0)
-//             {
-//                 this->value.erase(this->value.begin() + offset - 2);
-//                 --currentCoord.X;
-//             }
-//         }
-//     }
-// };
+void TextBox::keyDown(int keyCode, char character)
+{
+    if ((keyCode >= 0x30 && keyCode <= 122) || keyCode == VK_SPACE)
+        this->handleStringInput(character);
 
-// void TextBox::draw(Graphics &g, int x, int y, size_t z)
-// {
-//     Label::draw(g, x + 1, y + 1, z);
-//     g.moveTo(currentCoord.X + 2, currentCoord.Y + 2);
-//     g.setCursorVisibility(true);
-// };
+    if (keyCode == VK_LEFT || keyCode == VK_RIGHT)
+        this->handleRepositionHori(keyCode);
+
+    if (value.length() > 0 && (keyCode == VK_BACK || keyCode == VK_DELETE))
+        this->handleStringDelete(keyCode);
+}
