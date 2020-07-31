@@ -4,15 +4,15 @@ void NumericBox::draw(Graphics &g, int x, int y, size_t z)
 {
     if (z == 0)
     {
-        this->valueText.draw(g, this->subBtn.getLeft() + 1, this->valueText.getTop() + 1, z);
-        this->addBtn.draw(g, this->subBtn.getLeft() + 1, this->addBtn.getTop() + 1, z);
+        this->valueText.draw(g, this->valueText.getLeft() + 1, this->valueText.getTop() + 1, z);
+        this->addBtn.draw(g, this->addBtn.getLeft() + 1, this->addBtn.getTop() + 1, z);
         this->subBtn.draw(g, this->subBtn.getLeft() + 1, this->subBtn.getTop() + 1, z);
     }
 }
 
 void NumericBox::notify(std::string text)
 {
-    if (text == " + ")
+    if (text == this->addBtn.getValue())
     {
         this->increment();
     }

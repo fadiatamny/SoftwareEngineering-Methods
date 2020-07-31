@@ -11,7 +11,9 @@ int main(int argc, char **argv)
 	BorderSingleLineStyle sb;
 
 	Panel p(0, 0, &db, Color::Cyan, Color::Purple);
-
+	NumericBox nb(3, 3, 10, 0, &db, Color::White, Color::White);
+	p.addControl(&nb);
+	Control::setFocus(p);
 	EventEngine e;
 	e.run(p);
 }

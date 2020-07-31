@@ -11,9 +11,9 @@ class NumericBox : public Panel
 public:
     NumericBox(short x, short y, int max, int min, Border *border, Color color, Color backgroundColor) : Panel(x, y, border, color, backgroundColor),
                                                                                                          curr((max + min) / 2),
-                                                                                                         valueText(Label(" ", x + 20, y, 3, color, backgroundColor, border)),
-                                                                                                         addBtn(Button(" + ", x + 10, y + 5, 1, color, backgroundColor, border, this)),
-                                                                                                         subBtn(Button(" - ", x + 30, y + 5, 1, color, backgroundColor, border, this)),
+                                                                                                         valueText(Label(" ", x + 5, y, 3, color, backgroundColor, border)),
+                                                                                                         addBtn(Button(" + ", x + 12, y, 1, color, backgroundColor, border, this, 1)),
+                                                                                                         subBtn(Button(" - ", x, y, 1, color, backgroundColor, border, this, 1)),
                                                                                                          maxNum(max),
                                                                                                          minNum(min)
     {
