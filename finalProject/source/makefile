@@ -7,7 +7,7 @@ else
 endif
 
 TARGET = program
-CPPFLAGS = -g 
+CPPFLAGS = -std=c++1z -static -g
 
 default: $(TARGET)
 all: clean default

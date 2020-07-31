@@ -11,10 +11,9 @@
 class TextBox : public Label
 {
 public:
-    TextBox(short x, short y, short width, Border *border, Color color, Color backgroundColor) : Label("", x, y, width, color, backgroundColor, border)
+    TextBox(short x, short y, short width, Border *border, Color color, Color backgroundColor) : Label("", x, y, width, color, backgroundColor, border), currentCoord({(short)(left + 1 + this->value.length()), (short)(top + 1)})
     {
-        auto handler = GetStdHandle(STD_OUTPUT_HANDLE);
-        SetConsoleCursorPosition(handler, {(short)(left + 1 + this->value.length()), (short)(top + 1)});
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), this->currentCoord);
     }
 
     void draw(Graphics &g, int x, int y, size_t z);
@@ -26,7 +25,6 @@ public:
 
 private:
     COORD currentCoord;
-    unsigned int offset = 0;
     void handleStringInput(char c);
     void handleRepositionHori(int keyCode);
     void handleStringDelete(int keyCode);
